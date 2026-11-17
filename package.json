@@ -1,0 +1,59 @@
+{
+  "name": "escape-restaurant-checklist",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "npm run icons:build && npm run google:build && next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run google:build && tsx --test tests/*.test.ts",
+    "bootstrap": "tsx scripts/bootstrap.ts",
+    "test:e2e": "playwright test",
+    "format": "prettier --write app components lib services types google/src scripts tests *.ts *.mjs *.json",
+    "google:build": "node scripts/build-google.mjs",
+    "icons:build": "node scripts/build-icons.mjs",
+    "preview": "tsx scripts/preview.ts",
+    "build:hosting": "npm run icons:build && npm run google:build && node scripts/build-hosting.mjs",
+    "test:hosting": "playwright test -c playwright.hosting.config.ts",
+    "preview:hosting": "node --import tsx scripts/preview-hosting.ts",
+    "prepare:hosting-env": "node scripts/prepare-hosting-env.mjs",
+    "build:admin": "npm run build:hosting && node scripts/package-admin.mjs",
+    "test:admin": "playwright test -c playwright.admin.config.ts"
+  },
+  "dependencies": {
+    "@noble/hashes": "^2.4.0",
+    "@radix-ui/react-dialog": "^1.1.0",
+    "@radix-ui/react-slot": "^1.2.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "server-only": "^0.0.1",
+    "sharp": "^0.35.4",
+    "tailwind-merge": "^3.3.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/google-apps-script": "^2.0.13",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "dotenv": "^17.0.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.0.0",
+    "prettier": "^3.9.6",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}
