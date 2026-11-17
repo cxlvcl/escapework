@@ -1,0 +1,4 @@
+<IfModule mod_headers.c>
+Header set Cache-Control "no-store"
+Header always set X-Frame-Options "DENY"
+</IfModule>
