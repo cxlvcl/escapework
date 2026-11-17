@@ -1,0 +1,46 @@
+{
+  "name": "escape-admin-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ESCAPE — приложение администратора",
+  "author": "ESCAPE Restaurant",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "build:mac": "electron-builder --mac zip --x64 --arm64",
+    "build:win": "electron-builder --win nsis --x64",
+    "postinstall": "node node_modules/electron/install.js"
+  },
+  "devDependencies": {
+    "electron": "44.3.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "ru.escapeworkspaceru.admin",
+    "productName": "ESCAPE Admin",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.cjs",
+      "package.json",
+      "offline.html"
+    ],
+    "asar": true,
+    "mac": {
+      "category": "public.app-category.business",
+      "icon": "icon.png",
+      "identity": "-"
+    },
+    "win": {
+      "icon": "icon.png",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "artifactName": "ESCAPE-Admin-${version}-${os}-${arch}.${ext}"
+  }
+}
